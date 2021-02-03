@@ -7,7 +7,7 @@
 
     {% if request.user.is_authenticated %}
         <div class="col-4 offset-4">
-            <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'post-create' object.id %}">New Answer</a>
+            <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'post-create' object.id %}">Your Question</a>
         </div>
     {% endif %}
 
