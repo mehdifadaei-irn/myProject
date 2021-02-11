@@ -12,22 +12,23 @@
 
         <!-- Custom css -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-
         <title>q&A</title>
     </head>
     <body style="overflow-x: hidden;">
         
         <div class="row vertical-align header">
                 <div class="col-3 offset-1">
-                    <a href ="{% url 'forum-index' %}"><i class="fas fa-comments fa-3x home-btn"></i></a>
+                    <a href ="{% url 'forum-index' %}" data-toggle="tooltip" data-placement="right" title="topics"><i class="fas fa-comments fa-3x home-btn"></i></a>
                 </div>
                 {% if user.is_authenticated %}
                     <div class="col-1 offset-5 text-right align-self-center">
                         <a href="{% url 'logout' %}"><h3>log out</h3></a>
                     </div>
                     <div class="col-1 text-right align-self-center">
-                            <a href="{% url 'profile' username=user.username %}"><img class="rounded-circle account-img thumbpic" src="{{ user.profile.image.url }}" height="50"></a>
+                            <a href="{% url 'profile' username=user.username %}" data-toggle="tooltip" data-placement="bottom" title={{ user.username }}><img class="rounded-circle account-img thumbpic tooltipe" src="{{ user.profile.image.url }}" height="50">
+                            </a>
                             
                         </div>
                 {% else %}
@@ -40,7 +41,12 @@
                 {% endif %}
             </div>
         <div class="container-fluid">
-            {% block content %}{% endblock %}
+            {% if massages %}
+                {% for massage in massages %}
+                    <p>{{ massage }}</p>
+                {% endfor %}
+            {% endif %}
+        {% block content %}{% endblock %}
         </div>
 
         <!-- Optional JavaScript -->
@@ -68,6 +74,10 @@
 
                 document.getElementsByTagName("head")[0].appendChild(fileref);
             }
+
+            $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+            });
         </script>
         
         <div id="theme-wrapper">

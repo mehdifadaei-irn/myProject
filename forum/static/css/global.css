@@ -14,10 +14,10 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 4rem;
     border-right: .1em solid;
-	width: 8ch; /* # of chars */
+	width: 8ch;
 	white-space: nowrap;
 	overflow: hidden;
-    animation: typing 0.8s steps(6, end), /* # of steps = # of chars */
+    animation: typing 0.8s steps(6, end),
     blink-caret .5s step-end 0s alternate;
 }
 

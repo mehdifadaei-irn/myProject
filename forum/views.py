@@ -15,7 +15,7 @@ from .forms import CreateCommentForm
 
 class TopicListView(ListView):
     model = Topic
-    template_name = 'forum/index.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'forum/index.html'
     context_object_name = 'topics'
 
 
